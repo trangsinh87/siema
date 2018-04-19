@@ -97,7 +97,7 @@
     next_arrow_class_disabled = 'gc-html5-ui-swiper-button-next gc-html5-ui-swiper-button-disabled',
     dot_class = 'gc-html5-ui-swiper-dot',
     swiper_selector = '.gc-html5-ui-swiper-container';
-  Siema.prototype.addNav = function() {
+  GcHmlt5UISwiper.prototype.addNav = function() {
     var that = this;
     this.prevArrow = document.createElement('i');
     this.prevArrow.className = prev_arrow_class;
@@ -112,7 +112,7 @@
       that.next();
     });
   }
-  Siema.prototype.addPagination = function() {
+  GcHmlt5UISwiper.prototype.addPagination = function() {
     this.pagination = document.createElement('div');
     this.pagination.classList.add('gc-html5-ui-swiper-pagination');
     for (var i = 0, j = this.innerElements.length; i < j; i++) {
@@ -122,7 +122,7 @@
     }
     this.selector.appendChild(this.pagination);
   }
-  Siema.prototype.updateControllers = function() {
+  GcHmlt5UISwiper.prototype.updateControllers = function() {
     var count = this.innerElements.length;
     for (var i = 0; i < this.pagination.querySelectorAll('.' + dot_class).length; i++) {
       var addOrRemove = this.currentSlide === i ? 'add' : 'remove';
@@ -131,7 +131,7 @@
     this.prevArrow.className = this.currentSlide === 0 ? prev_arrow_class_disabled : prev_arrow_class;
     this.nextArrow.className = this.currentSlide === count - 1 ? next_arrow_class_disabled : next_arrow_class;
   }
-  var slider = new Siema({
+  var slider = new GcHmlt5UISwiper({
     selector: swiper_selector,
     onInit: function() {
       this.addNav();
@@ -140,8 +140,7 @@
     },
     onChange: function() {
       this.updateControllers();
-      console.log('======>>>> ');
-    },
+    }
   });
 
   </script>
