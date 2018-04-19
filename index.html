@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Siema</title>
+  <script src="./dist/siema.min.js"></script>
+  <style type="text/css">
+  body {
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+  img {
+    width: 100%;
+  }
+  .siema {
+    margin: 1rem 0;
+    position: relative;
+  }
+  .gc-html5-ui-swiper-pagination {
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    position: relative;
+    bottom: 25px;
+    border: 1px solid transparent;
+  }
+
+  .dots__item {
+    width: 8px;
+    height: 8px;
+    margin: 0 .5rem;
+    border: 0;
+    background-color: #ddd;
+    opacity: 0.6;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+  }
+  .dots__item--active {
+    background: #007aff;
+    opacity: 1;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0px;
+  }
+
+  .swiper-button-prev.swiper-button-disabled,
+  .swiper-button-next.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    left: 10px;
+    right: auto;
+  }
+
+  .swiper-button-next,
+  .swiper-container-rtl .swiper-button-prev {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    right: 10px;
+    left: auto;
+  }
+
+  .swiper-button-prev.swiper-button-white,
+  .swiper-container-rtl .swiper-button-next.swiper-button-white {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+  }
+
+  .swiper-button-next.swiper-button-white,
+  .swiper-container-rtl .swiper-button-prev.swiper-button-white {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+  }
+
+  .swiper-button-prev.swiper-button-black,
+  .swiper-container-rtl .swiper-button-next.swiper-button-black {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+  }
+
+  .swiper-button-next.swiper-button-black,
+  .swiper-container-rtl .swiper-button-prev.swiper-button-black {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+  }
+
+  </style>
+</head>
+
+<body>
+  <div class="siema">
+    <div><img src="https://pawelgrzybek.com/siema/assets/siema--pink.svg" alt="01" /></div>
+    <div><img src="https://pawelgrzybek.com/siema/assets/siema--yellow.svg" alt="02" /></div>
+    <div><img src="https://pawelgrzybek.com/siema/assets/siema--red.svg" alt="03" /></div>
+    <div><img src="https://pawelgrzybek.com/siema/assets/siema--green.svg" alt="04" /></div>
+  </div>
+  <script type="text/javascript">
+  var prev_arrow_class = 'swiper-button-prev',
+    prev_arrow_class_disabled = 'swiper-button-prev swiper-button-disabled',
+    next_arrow_class = 'swiper-button-next',
+    next_arrow_class_disabled = 'swiper-button-next swiper-button-disabled';
+  Siema.prototype.addNav = function() {
+    var that = this;
+    this.prevArrow = document.createElement('i');
+    this.prevArrow.className = prev_arrow_class;
+    this.nextArrow = document.createElement('i');
+    this.nextArrow.className = next_arrow_class;
+    this.selector.appendChild(this.prevArrow);
+    this.selector.appendChild(this.nextArrow);
+    this.prevArrow.addEventListener('click', function() {
+      that.prev();
+    });
+    this.nextArrow.addEventListener('click', function() {
+      that.next();
+    });
+  }
+  Siema.prototype.addPagination = function() {
+    this.pagination = document.createElement('div');
+    this.pagination.classList.add('gc-html5-ui-swiper-pagination');
+    for (var i = 0, j = this.innerElements.length; i < j; i++) {
+      var dot = document.createElement('div');
+      dot.classList.add('dots__item');
+      this.pagination.appendChild(dot);
+    }
+    // this.selector.parentNode.insertBefore(this.pagination, this.selector.nextSibling);
+    this.selector.appendChild(this.pagination);
+  }
+  Siema.prototype.updateControllers = function() {
+    var count = this.innerElements.length;
+    for (var i = 0; i < this.pagination.querySelectorAll('.dots__item').length; i++) {
+      var addOrRemove = this.currentSlide === i ? 'add' : 'remove';
+      this.pagination.querySelectorAll('.dots__item')[i].classList[addOrRemove]('dots__item--active');
+    }
+    this.prevArrow.className = this.currentSlide === 0 ? prev_arrow_class_disabled : prev_arrow_class;
+    this.nextArrow.className = this.currentSlide === count - 1 ? next_arrow_class_disabled : next_arrow_class;
+  }
+  var slider = new Siema({
+    selector: '.siema',
+    onInit: function() {
+      this.addNav();
+      this.addPagination();
+      this.updateControllers();
+    },
+    onChange: function() {
+      this.updateControllers()
+    },
+  });
+
+  </script>
+</body>
+
+</html>
